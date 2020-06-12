@@ -33,6 +33,7 @@ gem 'bcrypt'
 gem 'devise'
 gem 'jquery-rails'
 gem 'ratyrate'
+gem 'seed_dump'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
