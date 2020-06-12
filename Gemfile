@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'bcrypt'
 
+gem 'devise'
 gem 'jquery-rails'
 gem 'ratyrate'
 
