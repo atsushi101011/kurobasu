@@ -1,0 +1,134 @@
+<div class="main posts-index">
+  <div class="container">
+    <div class="subject">
+      <%= @subject.name %><br>
+    </div>
+
+    <div class="shirabasu">
+      <%= link_to("シラバスはこちら","#{@subject.shirabasu}") %><br>
+    </div>
+
+    <div class="book">
+      <%= link_to("教科書はこちら","#{@subject.book}") %>
+    </div>
+    
+    <div class="kuchikomi">
+      <p>口コミ一覧</p>
+    </div>
+
+    
+    <%# <ul class="user-tabs"> 
+      <li class="active">いいね順</li>
+      <li>新着順</li> %>
+    
+
+
+    <% if @current_user %>
+
+      <% @posts.each do |post| %>
+        <div class="posts-show-item">
+          <div class="post-left">
+            
+            <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          </div>
+          <div class="post-right">
+            <div class="post-user-name">
+              
+              <%= link_to(post.user.name,"/users/#{post.user.id}") %>
+            </div>
+            
+            <%= simple_format(post.content) %>
+          </div>
+
+          <div class="post-time">
+          <%= post.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </div>
+
+          
+          <% if Like.find_by(user_id: @current_user.id, post_id: post.id) %>
+
+              <%= link_to("/likes/#{post.id}/destroy",{method: "post"})do %>
+                <span class="fa fa-heart like-btn-unlike"></span>
+              <% end %>
+
+          <% else %>
+
+              <%= link_to("/likes/#{post.id}/create", {method: "post"}) do%>
+                <span class="fa fa-heart like-btn"></span>
+              <% end %>
+          <% end %>
+
+          <%= Like.where(post_id:post.id).count %>
+
+          
+
+          <% if post.user_id == @current_user.id %>
+            <div class="post-menus">
+              <%= link_to("編集", "/posts/#{post.id}/edit") %>
+              <%= link_to("削除", "/posts/#{post.id}/destroy",{method: "post"}) %>
+            </div>
+          <% end %>
+          
+        </div>
+      <% end %>
+
+    <% else %>
+
+      <% @posts.each do |post| %>
+        <div class="posts-show-item">
+          <div class="post-left">
+            
+            <img src="<%= "/user_images/#{post.user.image_name}" %>">
+          </div>
+
+          <div class="post-right">
+            <div class="post-user-name">
+              
+              <%= link_to(post.user.name,"/users/#{post.user.id}") %>
+            </div>
+            
+            <%= simple_format(post.content) %>
+          </div>
+
+          <div class="post-time">
+            <%= post.created_at.strftime("%Y-%m-%d %H:%M") %>
+          </div>
+
+          <%= link_to("/likes/#{post.id}/create", {method: "post"}) do%>
+            <span class="fa fa-heart like-btn"></span>
+          <% end %>
+        
+          <%= Like.where(post_id:post.id).count %>
+        </div>
+
+      <% end %>
+
+    <% end %>
+
+
+ 
+
+    
+    <h1 class="form-heading">投稿する</h1>
+    <h5 class="form-heading">(投稿するにはログインが必要です)</h5>
+
+    <%= form_tag("/posts/#{@subject.id}/create") do %>
+        <div class="form">
+         <div class="form-body">
+
+            <% @post.errors.full_messages.each do |message| %>
+              <div class="form-error">
+                <%= message %>
+              </div>
+            <% end %>
+
+            <textarea name="content"></textarea>
+            <input type="submit" value="投稿">
+         </div>
+        </div>
+    <% end %>
+ 
+  </div>
+</div>
+
+

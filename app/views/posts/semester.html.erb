@@ -1,0 +1,11 @@
+<div class="main posts-index">
+  <div class="container">
+    
+    <div class="link">
+      <% @subjects.each do |subject| %>
+        <%= link_to(subject.name,"/posts/index/#{subject.department_id}/#{subject.semester_id}/#{subject.id}") %><br>
+      
+      <% end %>
+    </div>
+  </div>
+</div>

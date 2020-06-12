@@ -1,0 +1,14 @@
+<div class="main user-show">
+  <div class="container">
+    <div class="user">
+     <div class="user-img">
+      <img src="<%= "/user_images/#{@user.image_name}" %>">
+     </div>
+      <h2><%=@user.name %></h2>
+
+      <% if @user.id == @current_user.id %>
+        <%= link_to("プロフィール編集","/users/#{@user.id}/edit") %>
+      <% end %>
+    </div>
+
+    
