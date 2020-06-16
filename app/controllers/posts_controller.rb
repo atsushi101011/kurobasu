@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   before_action:authenticate_user,{only:[:create,:show]}
   before_action:ensure_correct_user,{only:[:edit,:update,:destroy]}
-
+  
   
   def index
   end
@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     @subject = Subject.find_by(id:params[:id])
     @posts =Post.where(subject_id:@subject.id).order(created_at: :desc)
     @post = Post.new
+    
   end
 
   def show

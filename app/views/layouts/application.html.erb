@@ -5,12 +5,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     <%= analytics_init if Rails.env.production? %>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+    
   </head>
 
   <body>
@@ -20,38 +26,44 @@
       <%= link_to("県大クロバス", "/") %>
     </div>
     
+
     <ul class="header-menus">
+    <details>
+    <summary>Menu</summary>
+    <% if @current_user %>
+    <li>
+      <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
+    </li>
+    <li>
+      <%= link_to("履修一覧","/posts/index") %>
+    </li>
+    <li>
+      <%= link_to("部活サークル","https://u-hyogo-activity.glideapp.io/") %>
+    </li>
+    
+    <li>
+      <%= link_to("ログアウト","/logout",{method: :post}) %>
+    </li>
+  <% else %>
+    <li>
+        <%= link_to("履修一覧","/posts/index") %>
+    </li>
+    <li>
+      <%= link_to("部活サークル","https://u-hyogo-activity.glideapp.io/") %>
+    </li>
+    <li>
+      <%= link_to("新規登録","/signup") %>
+    </li>
+    <li>
+      <%= link_to("ログイン","/login") %>
+    </li>
 
-      <% if @current_user %>
-        <li>
-          <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
-        </li>
-        <li>
-          <%= link_to("履修一覧","/posts/index") %>
-        </li>
-        <li>
-          <%= link_to("部活サークル","https://u-hyogo-activity.glideapp.io/") %>
-        </li>
-        
-        <li>
-          <%= link_to("ログアウト","/logout",{method: :post}) %>
-        </li>
-      <% else %>
-        <li>
-            <%= link_to("履修一覧","/posts/index") %>
-        </li>
-        <li>
-          <%= link_to("部活サークル","https://u-hyogo-activity.glideapp.io/") %>
-        </li>
-        <li>
-          <%= link_to("新規登録","/signup") %>
-        </li>
-        <li>
-          <%= link_to("ログイン","/login") %>
-        </li>
+  <% end %>
 
-      <% end %>
-    </ul>
+    </details>
+    </ul>  
+
+      
     </header>
 
       <% if flash[:notice] %>

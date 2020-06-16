@@ -40,7 +40,7 @@
   .post-right {
     float: left;
     width: 90%;
-    padding-left: 25px;
+    padding-left: 35px;
     text-align: left;
   }
   .post-all{
@@ -53,7 +53,7 @@
   }
   
   .posts-show-item {
-    padding: 20px 30px 10px 30px;
+    padding: 20px 10px 10px 10px;
     background-color: white;
     box-shadow: 0 2px 6px #c1ced7;
     overflow: hidden;
@@ -72,26 +72,30 @@
   
   .posts-show-item .post-user-name a {
     vertical-align: middle;
-    font-size: 20px;
-    margin-left: 15px;
+    font-size: 18px;
   }
   
   .posts-show-item p {
-    font-size: 20px;
-    margin: 5px 0 0 15px;
+    font-size: 15px;
+    margin: 5px 0 0 0;
   }
   
   .post-time {
     color: #8899a6;
     margin-bottom: 5px;
+    margin-left: 65px;
   }
 
   .like-btn{
     color:#8899a6;
+    margin-left: 65px;
+
   }
   
   .like-btn-unlike{
     color:#ff2581;
+    margin-left: 65px;
+
   }
   
   .posts-show-item .fa {
@@ -126,16 +130,13 @@
 
   .subject{
     color:white;
-    font-size:30px;
+    font-size:25px;
     border-bottom:2px solid ;
-    
-
   }
 
   .shirabasu{
     
     display: inline-block;
-    opacity: 0.8;
     border-radius: 4px;
     background-color: #5dca88;
     padding: 5px 20px;
@@ -161,7 +162,6 @@
   .book{
     
     display: inline-block;
-    opacity: 0.8;
     border-radius: 4px;
     background-color: #5dca88;
     padding: 5px 20px;
@@ -185,7 +185,7 @@
 
   .kuchikomi{
     color:white;
-    font-size:25px;
+    font-size:20px;
     border-bottom:2px solid ;
     
   }
@@ -203,4 +203,22 @@
     margin-bottom: 10px;
     font-weight: 20;
     font-size: 20px;
+  }
+
+  .star-rating {
+    position: relative;
+    width: 5em;
+    height: 1em;
+    font-size: 25px;
+  
+  }
+  .star-rating-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffcc33;
+  }
+  .star-rating-back {
+    color: #ccc;
   }
