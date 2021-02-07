@@ -32,7 +32,6 @@ class UsersController < ApplicationController
     else
       render("users/new")
     end
-    
   end
 
   def edit
@@ -58,8 +57,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def login_form
-  end
+  def login_form; end
 
   def login
     @user = User.find_by(email: params[:email])
@@ -80,5 +78,4 @@ class UsersController < ApplicationController
     flash[:notice] = "ログアウトしました"
     redirect_to("/login")
   end
-
 end
