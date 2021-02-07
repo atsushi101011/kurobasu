@@ -1,28 +1,21 @@
 class PostsController < ApplicationController
-
   before_action:authenticate_user,{only:[:create,:show]}
   before_action:ensure_correct_user,{only:[:edit,:update,:destroy]}
   
-  
-  def index
-  end
+  def index; end
 
   def department
-    
     @department_id = params[:department_id]
   end
-
 
   def semester
     @subjects = Subject.where(department_id:params[:department_id] ,semester_id:params[:semester_id])
   end
-  
 
   def subject
     @subject = Subject.find_by(id:params[:id])
     @posts =Post.where(subject_id:@subject.id).order(created_at: :desc)
     @post = Post.new
-    
   end
 
   def show
@@ -30,7 +23,6 @@ class PostsController < ApplicationController
     @user = @post.user
     @likes_count = Like.where(post_id:@post.id).count
   end
-
 
   def create
     @subject = Subject.find_by(id:params[:id])
@@ -77,7 +69,4 @@ class PostsController < ApplicationController
       redirect_to("/posts/index")
     end
   end
-
-  
-  
 end
