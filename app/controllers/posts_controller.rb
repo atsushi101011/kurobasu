@@ -59,7 +59,6 @@ class PostsController < ApplicationController
     
     flash[:notice]="投稿を削除しました"
     redirect_to("/posts/index/#{@subject.department_id}/#{@subject.semester_id}/#{@subject.id}")
-
   end
 
   def ensure_correct_user
