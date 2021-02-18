@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'posts/index/:department_id' => 'posts#department'
   get 'posts/index/:department_id/:semester_id' => 'posts#semester'
   get 'posts/index/:department_id/:semester_id/:id' => 'posts#subject'
- 
 
   post 'posts/:id/create' => 'posts#create'
   get 'posts/:id' => 'posts#show'
@@ -25,5 +24,4 @@ Rails.application.routes.draw do
 
   post 'likes/:post_id/create' => 'likes#create'
   post 'likes/:post_id/destroy' => 'likes#destroy'
-
 end
