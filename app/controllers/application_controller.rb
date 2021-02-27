@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
     before_action :set_current_user
 
     def set_current_user
@@ -19,5 +18,4 @@ class ApplicationController < ActionController::Base
             redirect_to("/posts/index")
         end
     end
-
 end
